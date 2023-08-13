@@ -1,0 +1,28 @@
+<div class="bg-white py-3 px-5 rounded-lg">
+  <h5 class="font-semibold text-lg mb-1">Filter by make</h5>
+  <hr />
+  <div class="flex flex-col mt-2">
+    <form>
+      <div *ngFor="let make of makes" class="control-group">
+        <label class="control control-radio">
+          {{ make.name }}
+          <input
+            type="radio"
+            name="rbMake"
+            [value]="make.name"
+            (change)="selectMake($event)"
+          />
+          <div class="control_indicator"></div>
+        </label>
+      </div>
+
+      <button
+        type="button"
+        (click)="clearFilters()"
+        class="bg-slate-500 hover:bg-slate-400 transition mt-1 py-1 text-white rounded w-full"
+      >
+        Clear filters
+      </button>
+    </form>
+  </div>
+</div>

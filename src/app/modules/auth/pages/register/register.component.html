@@ -1,0 +1,104 @@
+<div class="fixed inset-0 bg-indigo-50 flex items-center justify-center">
+  <div class="bg-white p-8 rounded-xl shadow-sm">
+    <h1 class="font-bold mb-1 text-3xl text-center mx-auto">
+      Create a <span class="text-indigo-700">CarMarket</span> account
+    </h1>
+    <p class="text-center text-neutral-400 px-[10%] mx-auto mb-2">
+      Join the fastest growing used and new car marketplace in Europe
+    </p>
+    <hr />
+
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+      class="flex flex-col py-5"
+    >
+      <label for="tbUsername">Username:</label>
+      <input
+        id="tbUsername"
+        type="text"
+        formControlName="username"
+        class="border rounded p-2"
+      />
+      <small
+        *ngIf="
+          registerForm.controls['username'].invalid &&
+          registerForm.controls['username'].touched
+        "
+        class="text-rose-600"
+        >Invalid username.</small
+      >
+      <br />
+
+      <label for="tbEmail">Email:</label>
+      <input
+        id="tbEmail"
+        type="email"
+        formControlName="email"
+        class="border rounded p-2"
+      />
+      <small
+        *ngIf="
+          registerForm.controls['email'].invalid &&
+          registerForm.controls['email'].touched
+        "
+        class="text-rose-600"
+        >Invalid email address.</small
+      >
+      <br />
+
+      <label for="tbPhone">Phone number:</label>
+      <input
+        id="tbPhone"
+        type="text"
+        formControlName="phone"
+        class="border rounded p-2"
+      />
+      <small
+        *ngIf="
+          registerForm.controls['phone'].invalid &&
+          registerForm.controls['phone'].touched
+        "
+        class="text-rose-600"
+        >Invalid phone number.</small
+      >
+      <br />
+
+      <label for="tbPassword">Password:</label>
+      <input
+        id="tbPassword"
+        type="password"
+        formControlName="password"
+        class="border rounded p-2"
+      />
+      <small
+        *ngIf="
+          registerForm.controls['password'].invalid &&
+          registerForm.controls['password'].touched
+        "
+        class="text-rose-600"
+        >Invalid password.</small
+      >
+      <br />
+      <button
+        type="submit"
+        [disabled]="!registerForm.valid || submitDisabled"
+        class="w-full py-2 bg-indigo-500 text-white rounded-md disabled:bg-indigo-200 disabled:cursor-not-allowed"
+      >
+        Submit
+      </button>
+
+      <div class="w-full mt-4 text-center text-red-600">
+        {{ registerResponse }}
+      </div>
+    </form>
+    <p class="text-center">
+      Already have an account?
+      <a
+        routerLink="/login"
+        class="text-indigo-500 hover:text-indigo-300 transition"
+        >Login here.</a
+      >
+    </p>
+  </div>
+</div>

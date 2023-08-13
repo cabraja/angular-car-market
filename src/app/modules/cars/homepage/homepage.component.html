@@ -1,0 +1,14 @@
+<div
+  class="flex md:flex-row flex-col items-start w-full gap-5 justify-stretch mt-4"
+>
+  <div class="md:w-[20%] w-full">
+    <app-filters
+      [makes]="makes"
+      [selectedMake]="selectedMake"
+      (selectedMakeChange)="onSelectedMakeChange($event)"
+    ></app-filters>
+  </div>
+  <div class="md:w-[80%] w-full">
+    <app-listings [cars]="cars"></app-listings>
+  </div>
+</div>

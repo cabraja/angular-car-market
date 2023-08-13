@@ -1,0 +1,36 @@
+<div *ngIf="cars.length > 0" class="flex flex-row justify-between flex-wrap">
+  <a
+    [routerLink]="['/car', car.id]"
+    *ngFor="let car of cars"
+    href="#"
+    class="md:w-[30%] w-full mb-3 md:mb-0 shadow rounded group bg-white"
+  >
+    <div>
+      <div class="w-full relative overflow-hidden rounded-t-md">
+        <img
+          [src]="car.files[0].path"
+          [alt]="car.model"
+          class="object-fill h-full w-full group-hover:scale-110 transition"
+        />
+      </div>
+
+      <div class="px-3 py-2">
+        <h5>
+          <span class="font-semibold">{{ car.make }}</span> {{ car.model }}
+        </h5>
+
+        <div class="flex flex-row items-center justify-between">
+          <h6 class="font-semibold text-lg">
+            {{ car.price | currency : "EUR" }}
+          </h6>
+          <p class="text-neutral-400">{{ car.mileage }} km</p>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+
+<div *ngIf="cars.length == 0" class="w-full">
+  <p class="font-bold text-xl w-full text-center mt-[10%]">No cars found.</p>
+  <p class="text-neutral-400 text-center">Change filters and try again.</p>
+</div>
