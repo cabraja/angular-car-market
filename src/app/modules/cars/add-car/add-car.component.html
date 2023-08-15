@@ -1,0 +1,289 @@
+<div *ngIf="carForm" class="py-4 md:px-2 px-0 mx-auto w-fit">
+  <div class="rounded-lg bg-white shadow py-5 px-10 flex flex-col items-center">
+    <h2 class="font-bold text-2xl">Add a new car</h2>
+    <hr class="bg-slate-500 w-full my-2" />
+
+    <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+      <!-- ROW -->
+      <div
+        class="flex md:flex-row flex-col gap-x-6 gap-y-2 items-end justify-between"
+      >
+        <div class="flex flex-col w-full">
+          <label for="ddMake">Make: <span class="text-red-600">*</span></label>
+          <select
+            id="ddMake"
+            class="border rounded px-2 py-1 w-full"
+            formControlName="make"
+          >
+            <option value="" selected>Select a make</option>
+            <option *ngFor="let make of makes" [value]="make.id">
+              {{ make.name }}
+            </option>
+          </select>
+          <small
+            *ngIf="
+              carForm.controls['make'].invalid &&
+              carForm.controls['make'].touched
+            "
+            class="text-rose-600"
+            >Pick a make.</small
+          >
+          <small
+            *ngIf="
+              !carForm.controls['make'].touched ||
+              !carForm.controls['make'].invalid
+            "
+            class="invisible"
+            >Pick a make.</small
+          >
+        </div>
+        <div class="flex flex-col w-full">
+          <label for="tbModel"
+            >Model: <span class="text-red-600">*</span></label
+          >
+          <input
+            type="text"
+            name="tbModel"
+            id="tbModel"
+            class="border rounded px-2 py-1 w-full"
+            formControlName="model"
+          />
+          <small
+            *ngIf="
+              carForm.controls['model'].invalid &&
+              carForm.controls['model'].touched
+            "
+            class="text-rose-600"
+            >Enter model name.</small
+          >
+          <small
+            *ngIf="
+              !carForm.controls['model'].touched ||
+              !carForm.controls['model'].invalid
+            "
+            class="invisible"
+            >Enter model name.</small
+          >
+        </div>
+
+        <div class="flex flex-col w-full">
+          <label for="tbModel"
+            >Price: <span class="text-red-600">*</span></label
+          >
+          <input
+            type="number"
+            name="tbPrice"
+            id="tbPrice"
+            class="border rounded px-2 py-1 w-full"
+            formControlName="price"
+          />
+          <small
+            *ngIf="
+              carForm.controls['price'].invalid &&
+              carForm.controls['price'].touched
+            "
+            class="text-rose-600"
+            >Enter price.</small
+          >
+          <small
+            *ngIf="
+              !carForm.controls['price'].touched ||
+              !carForm.controls['price'].invalid
+            "
+            class="invisible"
+            >Enter price.</small
+          >
+        </div>
+      </div>
+      <!-- ROW -->
+      <div
+        class="flex md:flex-row flex-col gap-x-6 gap-y-2 items-end justify-between"
+      >
+        <div class="flex flex-col w-full">
+          <label for="tbVariant">Variant: </label>
+          <input
+            type="text"
+            name="tbVariant"
+            id="tbVariant"
+            class="border rounded px-2 py-1 w-full"
+            formControlName="variant"
+          />
+        </div>
+      </div>
+      <!-- ROW -->
+      <div
+        class="flex md:flex-row flex-col gap-x-6 gap-y-2 items-end justify-between mt-4"
+      >
+        <div class="flex flex-col w-full">
+          <label for="tbCapacity"
+            >Engine Capacity: <span class="text-red-600">*</span></label
+          >
+          <input
+            type="number"
+            name="tbCapacity"
+            id="tbCapacity"
+            class="border rounded px-2 py-1 w-full"
+            formControlName="engineCapacity"
+          />
+          <small
+            *ngIf="
+              carForm.controls['engineCapacity'].invalid &&
+              carForm.controls['engineCapacity'].touched
+            "
+            class="text-rose-600"
+            >Enter engine capacity.</small
+          >
+          <small
+            *ngIf="
+              !carForm.controls['engineCapacity'].touched ||
+              !carForm.controls['engineCapacity'].invalid
+            "
+            class="invisible"
+            >Enter engine capacity.</small
+          >
+        </div>
+
+        <div class="flex flex-col w-full">
+          <label for="tbMileage"
+            >Mileage: <span class="text-red-600">*</span></label
+          >
+          <input
+            type="number"
+            name="tbMileage"
+            id="tbMileage"
+            class="border rounded px-2 py-1 w-full"
+            formControlName="mileage"
+          />
+          <small
+            *ngIf="
+              carForm.controls['mileage'].invalid &&
+              carForm.controls['mileage'].touched
+            "
+            class="text-rose-600"
+            >Enter mileage.</small
+          >
+          <small
+            *ngIf="
+              !carForm.controls['mileage'].touched ||
+              !carForm.controls['mileage'].invalid
+            "
+            class="invisible"
+            >Enter mileage.</small
+          >
+        </div>
+
+        <div class="flex flex-col w-full">
+          <label for="tbPower"
+            >Power: <span class="text-red-600">*</span></label
+          >
+          <input
+            type="number"
+            name="tbPower"
+            id="tbPower"
+            class="border rounded px-2 py-1 w-full"
+            formControlName="power"
+          />
+          <small
+            *ngIf="
+              carForm.controls['power'].invalid &&
+              carForm.controls['power'].touched
+            "
+            class="text-rose-600"
+            >Enter power.</small
+          >
+          <small
+            *ngIf="
+              !carForm.controls['power'].touched ||
+              !carForm.controls['power'].invalid
+            "
+            class="invisible"
+            >Enter power.</small
+          >
+        </div>
+      </div>
+
+      <div
+        class="flex md:flex-row flex-col flex-wrap gap-x-6 gap-y-2 items-end justify-between mt-2"
+      >
+        <div
+          *ngFor="let spec of specifications"
+          class="flex flex-col w-full md:w-[48%]"
+        >
+          <label [for]="'dd' + spec.specificationName"
+            >{{ spec.specificationName }}:
+            <span class="text-red-600">*</span></label
+          >
+          <select
+            [name]="'dd' + spec.specificationName"
+            [id]="'dd' + spec.specificationName"
+            class="border rounded px-2 py-1 w-full"
+            [formControlName]="spec.specificationName"
+          >
+            <option value="">Select</option>
+            <option *ngFor="let obj of spec.values" [value]="obj.id">
+              {{ obj.value }}
+            </option>
+          </select>
+          <small
+            *ngIf="
+              carForm.controls[spec.specificationName].invalid &&
+              carForm.controls[spec.specificationName].touched
+            "
+            class="text-rose-600"
+            >Choose an option.</small
+          >
+          <small
+            *ngIf="
+              !carForm.controls[spec.specificationName].touched ||
+              !carForm.controls[spec.specificationName].invalid
+            "
+            class="invisible"
+            >Choose an option.</small
+          >
+        </div>
+      </div>
+
+      <hr class="bg-slate-500 w-full mt-8" />
+
+      <div class="mt-4">
+        <div class="w-full flex flex-row items-center justify-between mb-4">
+          <h6>Image URL:</h6>
+          <button
+            (click)="addImage()"
+            type="button"
+            class="rounded-full border-sky-900 border-2 text-sky-900 hover:bg-sky-700 hover:text-white transition px-4 py-2"
+          >
+            Add another image
+          </button>
+        </div>
+        <div class="flex flex-col w-full gap-y-2 mt-1">
+          <input
+            type="text"
+            class="border rounded px-2 py-1 w-full"
+            formControlName="imageUrl"
+          />
+        </div>
+
+        <div
+          *ngFor="let url of additionalImages; let i = index"
+          class="flex flex-col w-full gap-y-2 mt-2"
+        >
+          <input
+            type="text"
+            class="border rounded px-2 py-1 w-full"
+            [(ngModel)]="additionalImages[i]"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="!carForm.valid"
+        class="w-full mt-3 py-2 bg-sky-800 text-white rounded shadow hover:bg-sky-400 disabled:bg-sky-200 disabled:cursor-not-allowed transition cursor-pointer"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

@@ -81,6 +81,25 @@
         </li>
       </ul>
     </div>
+
+    <div class="bg-white rounded-xl shadow p-6 mt-4">
+      <ul class="ps-1 font-normal mt-2">
+        <li class="flex flex-row items-center mt-1 text-lg">
+          <i class="fa-solid fa-heart text-rose-600 me-2"></i>
+          <p>Followed by</p>
+          <p class="text-neutral-500 ms-1">
+            {{ car.followersCount }}
+            {{ car.followersCount == 1 ? "person" : "people" }}
+          </p>
+        </li>
+      </ul>
+    </div>
+
+    <button
+      class="w-full mt-3 py-2 bg-sky-800 text-white rounded shadow hover:bg-sky-400 transition"
+    >
+      Follow this car
+    </button>
   </div>
 </div>
 

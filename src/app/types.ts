@@ -26,6 +26,7 @@ export interface PaginatedResponse<T>{
 }
 
 export interface Make{
+    id:number;
     name:string;
     carCount:number;
 }
@@ -67,4 +68,30 @@ export interface SingleCar {
     files:Array<any>;
     followersCount:number;
     specifications:Array<Specification>
+}
+
+export interface CreateCar{
+    price:number;
+    model:string;
+    variant?:string;
+    engineCapacity:number;
+    mileage:number;
+    power:number;
+    makeId:Number;
+    specificationValues:Array<{
+        specificationId:number;
+        specificationValueId:number;
+    }>
+    files:Array<{
+        path:string;
+    }>
+}
+
+export interface SpecificationInsert{
+    id:number;
+    specificationName:string;
+    values:Array<{
+        id:number;
+        value:string | number;
+    }>
 }

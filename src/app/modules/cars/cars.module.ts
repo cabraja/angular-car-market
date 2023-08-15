@@ -5,6 +5,10 @@ import { FiltersComponent } from './filters/filters.component';
 import { ListingsComponent } from './listings/listings.component';
 import { SingleCarComponent } from './single-car/single-car.component';
 import { RouterModule } from '@angular/router';
+import { AddCarComponent } from './add-car/add-car.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { MyCarsComponent } from './my-cars/my-cars.component';
 
 
 @NgModule({
@@ -12,15 +16,20 @@ import { RouterModule } from '@angular/router';
     HomepageComponent,
     FiltersComponent,
     ListingsComponent,
-    SingleCarComponent
+    SingleCarComponent,
+    AddCarComponent,
+    MyCarsComponent
   ],
   exports:[
     HomepageComponent,
-    SingleCarComponent
+    SingleCarComponent,
+    AddCarComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class CarsModule { }

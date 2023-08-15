@@ -1,0 +1,42 @@
+<div class="max-w-[900px] mx-auto flex flex-col rounded-lg shadow p-8 bg-white">
+  <h2 class="text-center font-bold text-3xl">My cars</h2>
+  <div
+    *ngFor="let car of cars"
+    class="w-full rounded shadow border-[1px] flex flex-row border-neutral-300 my-3"
+  >
+    <div class="md:w-[40%] w-full">
+      <img class="w-full rounded" [src]="car.files[0].path" [alt]="car.model" />
+    </div>
+
+    <div class="md:w-[60%] w-full px-8 py-4">
+      <div class="flex flex-row items-center justify-between">
+        <h5 class="font-bold text-xl">
+          {{ car.make }} {{ car.model }}
+          <span class="text-neutral-500 font-semibold">{{ car.variant }}</span>
+        </h5>
+
+        <button
+          (click)="deleteCar(car.id)"
+          class="bg-red-500 rounded px-2 py-1 hover:opacity-60 transition"
+        >
+          <i class="fa-solid fa-trash-can text-white"></i>
+        </button>
+      </div>
+      <hr class="my-2" />
+      <p class="text-neutral-500">Mileage: {{ car.mileage }} km</p>
+      <p class="text-neutral-500">
+        Engine Capacity: {{ car.engineCapacity }} cc
+      </p>
+      <p class="text-neutral-500">Power: {{ car.power }} HP</p>
+      <h6 class="font-semibold text-lg">{{ car.price | currency : "EUR" }}</h6>
+    </div>
+  </div>
+
+  <div *ngIf="cars.length == 0" class="w-full text-center">
+    <h6 class="font-semibold text-xl">You do not have any cars...</h6>
+    <p class="text-neutral-400">
+      <a routerLink="/car/new" class="text-sky-500 underline">Click here</a> to
+      add a new car.
+    </p>
+  </div>
+</div>

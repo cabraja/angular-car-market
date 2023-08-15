@@ -6,6 +6,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { HomepageComponent } from './modules/cars/homepage/homepage.component';
 import { LoggedGuard } from './guards/logged.guard';
 import { SingleCarComponent } from './modules/cars/single-car/single-car.component';
+import { AddCarComponent } from './modules/cars/add-car/add-car.component';
+import { MyCarsComponent } from './modules/cars/my-cars/my-cars.component';
 
 const routes: Routes = [
   {
@@ -17,6 +19,16 @@ const routes: Routes = [
     path: 'register',
     canActivate: [LoggedGuard],
     component: RegisterComponent
+  },
+  {
+    path: 'mycars',
+    canActivate: [AuthGuard],
+    component: MyCarsComponent
+  },
+  {
+    path: 'car/new',
+    canActivate: [AuthGuard],
+    component: AddCarComponent
   },
   { path: 'car/:id',
     canActivate: [AuthGuard],

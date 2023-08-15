@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
-import { Make,PaginatedResponse,Car, SingleCar } from 'src/app/types';
+import { Make,PaginatedResponse,Car, SingleCar, SpecificationInsert, CreateCar } from 'src/app/types';
 import { Token } from '@angular/compiler';
 
 const headers = new HttpHeaders({
@@ -27,5 +27,17 @@ export class CarService {
 
   getSingleCar(id:string):Observable<SingleCar>{
     return this.http.get<SingleCar>(`${environment.apiUrl}/cars/${id}`, {headers});
+  }
+
+  getSpecifications():Observable<SpecificationInsert[]>{
+    return this.http.get<SpecificationInsert[]>(`${environment.apiUrl}/specifications`, {headers});
+  }
+
+  createCar(data:CreateCar):Observable<any>{
+    return this.http.post<CreateCar>(`${environment.apiUrl}/cars`, data, {headers});
+  }
+
+  deleteCar(id:number):Observable<any>{
+    return this.http.delete<number>(`${environment.apiUrl}/cars/${id}`, {headers});
   }
 }

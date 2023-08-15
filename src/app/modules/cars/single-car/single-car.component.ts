@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {  SingleCar } from 'src/app/types';
 import { CarService } from '../services/car.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-single-car',
@@ -12,7 +13,7 @@ export class SingleCarComponent implements OnInit{
 
   car:SingleCar | null = null;
 
-  constructor(private route:ActivatedRoute, private carService:CarService){
+  constructor(private route:ActivatedRoute, private carService:CarService, private router:Router){
 
   }
 

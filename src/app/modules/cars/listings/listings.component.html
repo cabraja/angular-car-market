@@ -1,4 +1,7 @@
-<div *ngIf="cars.length > 0" class="flex flex-row justify-between flex-wrap">
+<div
+  *ngIf="cars.length > 0"
+  class="flex flex-row justify-between flex-wrap gap-y-5"
+>
   <a
     [routerLink]="['/car', car.id]"
     *ngFor="let car of cars"
@@ -6,11 +9,11 @@
     class="md:w-[30%] w-full mb-3 md:mb-0 shadow rounded group bg-white"
   >
     <div>
-      <div class="w-full relative overflow-hidden rounded-t-md">
+      <div class="relative w-full h-[20vh] overflow-hidden rounded-t-md">
         <img
           [src]="car.files[0].path"
           [alt]="car.model"
-          class="object-fill h-full w-full group-hover:scale-110 transition"
+          class="object-cover h-full w-full group-hover:scale-110 transition"
         />
       </div>
 
