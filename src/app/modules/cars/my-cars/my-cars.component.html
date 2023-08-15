@@ -2,13 +2,13 @@
   <h2 class="text-center font-bold text-3xl">My cars</h2>
   <div
     *ngFor="let car of cars"
-    class="w-full rounded shadow border-[1px] flex flex-row border-neutral-300 my-3"
+    class="w-full rounded shadow border-[1px] flex flex-col md:flex-row border-neutral-300 my-3"
   >
     <div class="md:w-[40%] w-full">
       <img class="w-full rounded" [src]="car.files[0].path" [alt]="car.model" />
     </div>
 
-    <div class="md:w-[60%] w-full px-8 py-4">
+    <div class="md:w-[60%] w-full md:px-8 px-4 py-4">
       <div class="flex flex-row items-center justify-between">
         <h5 class="font-bold text-xl">
           {{ car.make }} {{ car.model }}
